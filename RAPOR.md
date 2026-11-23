@@ -1,4 +1,4 @@
-[RAPOR.md](https://github.com/user-attachments/files/35287008/RAPOR.md)
+
 # ATM Simülasyonu Raporu
 
 ## 1. Programın Amacı

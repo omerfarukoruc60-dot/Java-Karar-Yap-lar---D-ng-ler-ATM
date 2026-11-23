@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+public class AkıllıATMveBankacılıkSimülasyonu {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int bakiye = 10000;
+        int islemSayisi = 0;
+        int toplamYatirilan = 0;
+        int toplamCekilen = 0;
+
+        System.out.println("Merhaba atm uygulamasina hosgeldiniz. Baslangic bakiyeniz 10.000 TL'dir.");
+
+        while (true) {
+            System.out.println("Yapmak istediginiz islemi seciniz:");
+            System.out.println("1. Bakiye goruntuleme");
+            System.out.println("2. Para yatirma");
+            System.out.println("3. Para cekme");
+            System.out.println("4. Islem ozeti");
+            System.out.println("Sistemden cikmak isterseniz 0 basin.");
+
+            int kullaniciSecim = input.nextInt();
+
+            if (kullaniciSecim == 0) {
+                break;
+            } else if (kullaniciSecim == 1) {
+                System.out.println(bakiye + " TL bakiyeniz bulunmaktadir.");
+            } else if (kullaniciSecim == 2) {
+                System.out.println("Ne kadar para yatirmak istersiniz?");
+                int kullaniciYatirma = input.nextInt();
+
+                if (kullaniciYatirma <= 0) {
+                    System.out.println("Negatif tutar yatiramazsiniz.");
+                } else {
+                    bakiye = bakiye + kullaniciYatirma;
+                    toplamYatirilan = toplamYatirilan + kullaniciYatirma;
+                    islemSayisi++;
+                    System.out.println(bakiye + " TL paranizi yatirdiktan sonraki bakiyenizdir.");
+                }
+            } else if (kullaniciSecim == 3) {
+                System.out.println("Ne kadar para cekmek istersiniz?");
+                int kullaniciCekme = input.nextInt();
+
+                if (kullaniciCekme <= 0) {
+                    System.out.println("Negatif tutar cekemezsiniz.");
+                } else if (kullaniciCekme > bakiye) {
+                    System.out.println("Bakiyeniz yetersiz.");
+                } else {
+                    bakiye = bakiye - kullaniciCekme;
+                    toplamCekilen = toplamCekilen + kullaniciCekme;
+                    islemSayisi++;
+                    System.out.println(bakiye + " TL paranizi cektikten sonraki bakiyenizdir.");
+                }
+            } else if (kullaniciSecim == 4) {
+                System.out.println("Toplam islem sayisi: " + islemSayisi);
+                System.out.println("Toplam yatirilan: " + toplamYatirilan + " TL");
+                System.out.println("Toplam cekilen: " + toplamCekilen + " TL");
+            } else {
+                System.out.println("Gecersiz sayi, basa donuyorsunuz.");
+            }
+        }
+
+        System.out.println("Son bakiyeniz: " + bakiye + " TL");
+        System.out.println("Toplam islem sayisi: " + islemSayisi);
+        input.close();
+    }
+}
